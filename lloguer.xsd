@@ -15,10 +15,39 @@ elementFormDefault="qualified">
 					<llc:element name="equipacio">
 						<llc:complexType>
 							<llc:sequence>
-							<llc:element name="climatitzador" type="llc:string"/>
-							<llc:element name="airbagsLaterals" type="llc:string"/>
-							<llc:element name="automatic" type="llc:string"/>
-							<llc:element name="cadiraNinPetit" type="llc:string"/>
+							<llc:element name="climatitzador">
+								<llc:simpleType>
+									<llc:restriction base="xs:string">
+										<llc:enumeration value="Si"/>
+										<llc:enumeration value="No"/>
+										<llc:enumeration value="Opcional"/>
+									</llc:restriction>
+								</llc:simpleType>
+							</llc:element>
+							<llc:element name="airbagsLaterals">
+								<llc:simpleType>
+									<llc:restriction base="xs:string">
+										<llc:enumeration value="Si"/>
+										<llc:enumeration value="No"/>
+										<llc:enumeration value="Opcional"/>
+									</llc:restriction>
+								</llc:simpleType>
+							<llc:element name="automatic">
+								<llc:simpleType>
+									<llc:restriction base="xs:string">
+										<llc:enumeration value="Si"/>
+										<llc:enumeration value="No"/>
+										<llc:enumeration value="Opcional"/>
+									</llc:restriction>
+								</llc:simpleType>
+							<llc:element name="cadiraNinPetit">
+								<llc:simpleType>
+									<llc:restriction base="xs:string">
+										<llc:enumeration value="Si"/>
+										<llc:enumeration value="No"/>
+										<llc:enumeration value="Opcional"/>
+									</llc:restriction>
+								</llc:simpleType>
 							</llc:sequence>
 						</llc:complexType>
 					</llc:element>
@@ -30,32 +59,31 @@ elementFormDefault="qualified">
 				<llc:complexType>
 					<llc:sequence>
 					<llc:element name="nom">
- 						<xsd:complexType>
-							<xsd:simpleContent>
-								<xsd:extension base="xsd:string">
-									<xsd:attribute name="tractament" type="xsd:string" use="required"/>
-								</xsd:extension>
-							</xsd:simpleContent>
-						</xsd:complexType>
-					</xsd:element>
-					<llc:element name="telefon"/>
-						<xs:simpleType>
-							<xs:restriction base="xs:integer">
-								<xs:minInclusive value="971230000"/>
-								<xs:maxInclusive value="971239999"/>
-							</xs:restriction>
-						</xs:simpleType>
-						</xsd:simpleType>
+ 						<llc:complexType>
+							<llc:simpleContent>
+								<llc:extension base="xsd:string">
+									<llc:attribute name="tractament" type="xsd:string" use="required"/>
+								</llc:extension>
+							</llc:simpleContent>
+						</llc:complexType>
+					</llc:element>
+					<llc:element name="telefon">
+						<llc:simpleType>
+							<llc:restriction base="xs:integer">
+								<llc:minInclusive value="971230000"/>
+								<llc:maxInclusive value="971239999"/>
+							</llc:restriction>
+						</llc:simpleType>
 					</llc:element>
 					<llc:element name="email" type="llc:string"/>
 					<llc:element name="tipusClient">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="Premium"/>
-								<xs:enumeration value="Habitual"/>
-								<xs:enumeration value="Ocasional"/>
-							</xs:restriction>
-						</xs:simpleType>
+						<llc:simpleType>
+							<llc:restriction base="xs:string">
+								<llc:enumeration value="Premium"/>
+								<llc:enumeration value="Habitual"/>
+								<llc:enumeration value="Ocasional"/>
+							</llc:restriction>
+						</llc:simpleType>
 					</llc:element>
 					<llc:element name="lloguer" minOccurs="1" maxOccurs="unbounded">
 						<llc:complexType>
@@ -67,7 +95,7 @@ elementFormDefault="qualified">
 						</llc:complexType>
 					</llc:element>					
 					</llc:sequence>
-					<xs:attribute name="dni" type="llc:string"/>
+					<llc:attribute name="dni" type="llc:string"/>
 				</llc:complexType>
 			</llc:element>
 		</llc:complexType>
