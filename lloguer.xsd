@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<llc:schema xmlns:llc="http://www.w3.org/2001/XMLSchema"
+xmlns:l="http://www.iessonferrer.net/jgonzalez/lloguerCotxes"
+targetNamespace="http://www.iessonferrer.net/mgallego/lloguerCotxes"
+elementFormDefault="qualified">
+	<llc:element name="lloguerCotxes">
+		<llc:complexType>
+			<llc:sequence>
+			<llc:element name="cotxe" maxOccurs="unbounded">
+				<llc:complexType>
+					<llc:sequence>
+					<llc:element name="marca" type="llc:string"/>
+					<llc:element name="model" type="llc:string"/>
+					<llc:element name="color" type="llc:string" minOccurs="0"/>
+					<llc:element name="equipacio">
+						<llc:complexType>
+							<llc:sequence>
+							<llc:element name="climatitzador" type="llc:string"/>
+							<llc:element name="airbagsLaterals" type="llc:string"/>
+							<llc:element name="automatic" type="llc:string"/>
+							<llc:element name="cadiraNinPetit" type="llc:string"/>
+							</llc:sequence>
+						</llc:complexType>
+					</llc:element>
+					<llc:attribute name="matricula" type="llc:string"/>
+					</llc:sequence>
+				</llc:complexType>
+			</llc:element>
+			<llc:element name="client" maxOccurs="unbounded">
+				<llc:complexType>
+					<llc:sequence>
+					<llc:element name="nom">
+ 						<xsd:complexType>
+							<xsd:simpleContent>
+								<xsd:extension base="xsd:string">
+									<xsd:attribute name="tractament" type="xsd:string" use="required"/>
+								</xsd:extension>
+							</xsd:simpleContent>
+						</xsd:complexType>
+					</xsd:element>
+					<llc:element name="telefon"/>
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:minInclusive value="971230000"/>
+								<xs:maxInclusive value="971239999"/>
+							</xs:restriction>
+						</xs:simpleType>
+						</xsd:simpleType>
+					</llc:element>
+					<llc:element name="email" type="llc:string"/>
+					<llc:element name="tipusClient">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Premium"/>
+								<xs:enumeration value="Habitual"/>
+								<xs:enumeration value="Ocasional"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</llc:element>
+					<llc:element name="lloguer" minOccurs="1" maxOccurs="unbounded">
+						<llc:complexType>
+							<llc:sequence>
+							<llc:element name="cotxe" type="llc:string"/>
+							<llc:element name="dataInici" type="string"/>
+							<llc:element name="dataFi" type="string"/>
+							</llc:sequence>
+						</llc:complexType>
+					</llc:element>					
+					</llc:sequence>
+					<xs:attribute name="dni" type="llc:string"/>
+				</llc:complexType>
+			</llc:element>
+		</llc:complexType>
+		<llc:key name="cotxekey">
+        		<llc:selector xpath="l:cotxe"/>
+        		<llc:field xpath="@matricula"/>
+    		</llc:key>
+		<llc:key name="clientkey">
+        		<llc:selector xpath="l:client"/>
+        		<llc:field xpath="@dni"/>
+    		</llc:key>
+		<llc:key name="nomclientkey">
+        		<llc:selector xpath="l:nom"/>
+        		<llc:field xpath="@tractament"/>
+    		</llc:key>
+	</llc:element>
+</llc:schema>
